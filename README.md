@@ -1,21 +1,18 @@
 # vue-login
+sea-koa 的 api-login 分支的前端页面。
 
-> A Vue.js project
+## 启动步骤
+1. 启动后端项目并配置 host
+    ```
+    127.0.0.1   www.a.com
+    ```
+2. 下载安装依赖
+    ```
+    git clone https://github.com/xinghaiyang1994/sea-koa.git
 
-## Build Setup
+    rm -rf .git
+    
+    cnpm i 
 
-``` bash
-# install dependencies
-npm install
-
-# serve with hot reload at localhost:8080
-npm run dev
-
-# build for production with minification
-npm run build
-
-# build for production and view the bundle analyzer report
-npm run build --report
-```
-
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
+    npm run dev
+    ```
