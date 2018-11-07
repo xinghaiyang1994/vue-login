@@ -9,7 +9,7 @@
                 <el-input v-model="form.password" type="password"></el-input>
             </el-form-item>
             <div>
-                <img :src="captcha" width="200" height="50" alt="">
+                <img @click="chgCaptcha" :src="captcha" width="200" height="50" alt="">
             </div>
             <el-form-item label="验证码" prop="captcha">
                 <el-input v-model="form.captcha" type="password"></el-input>
@@ -37,7 +37,7 @@ export default {
                 password: '',
                 captcha: ''
             },
-            captcha: API.CAPTCHA,
+            captcha: '',
             rules: {
                 name: [
                     { required: true, message: '不能为空', trigger: 'change' }
@@ -52,6 +52,9 @@ export default {
         }
     },
     methods: {
+        chgCaptcha () {
+            this.captcha = API.CAPTCHA + '?t=' + (new Date()).getTime()
+        },
         toLogin () {
             let data = this.form
             postLogin(data).then(res => {
@@ -87,6 +90,9 @@ export default {
         resetForm () {
             this.$refs['form'].resetFields()
         }
+    },
+    created () {
+        this.chgCaptcha()
     }
 }
 </script>
