@@ -1,5 +1,6 @@
 # vue-login
-sea-koa 的前端页面。
+sea-koa 的前端页面。  
+
 类型：
 * api-login-session 分支为 sea-koa 的同名分支的前端页面
 * api-login-token 分支为 sea-koa 的同名分支的前端页面
