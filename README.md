@@ -1,5 +1,5 @@
 # vue-login
-sea-koa 的 api-login 分支的前端页面。
+sea-koa 的 api-login-session 分支的前端页面。
 
 ## 启动步骤
 1. 启动后端项目并配置 host
@@ -16,4 +16,3 @@ sea-koa 的 api-login 分支的前端页面。
 
     npm run dev
     ```
-    
