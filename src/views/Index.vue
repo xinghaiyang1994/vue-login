@@ -49,9 +49,7 @@ export default {
                         type: 'success',
                         message: '退出成功。'
                     })
-                    setTimeout(() => {
-                        this.$router.push('/')
-                    }, 500)
+                    this.isLogin = false
                 } else {
                     this.$message({
                         type: 'error',
@@ -65,9 +63,6 @@ export default {
         }
     },
     created () {
-        this.getUserInfo()
-    },
-    updated () {
         this.getUserInfo()
     }
 }
