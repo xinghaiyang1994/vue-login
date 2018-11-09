@@ -1,9 +1,17 @@
+import axios from 'axios'
 import ajaxInit from 'sea-axios'
 
 import { API } from './api'
 
 const ajax = ajaxInit({
-    initCookie: true
+    initCookie: true,
+    transformRequestFn (config) {
+        let token = localStorage.getItem('token')
+        if (token) {
+            config.headers['Authorization'] = 'bearer ' + token
+        }
+        return config
+    }
 })
 
 // 登录

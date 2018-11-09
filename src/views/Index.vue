@@ -2,6 +2,7 @@
     <div class="index-page main-body">
         <div v-if="isLogin">
             <div>{{info.name}}</div>
+            <el-button @click="$router.push('/info')" type="primary">查看详情</el-button>
             <el-button @click="logout" type="primary">退出</el-button>
         </div>
         <div v-else>
@@ -49,9 +50,8 @@ export default {
                         type: 'success',
                         message: '退出成功。'
                     })
-                    setTimeout(() => {
-                        this.$router.push('/')
-                    }, 500)
+                    this.isLogin = false
+                    localStorage.removeItem('token')
                 } else {
                     this.$message({
                         type: 'error',
@@ -67,9 +67,6 @@ export default {
     created () {
         this.getUserInfo()
     },
-    updated () {
-        this.getUserInfo()
-    }
 }
 </script>
 

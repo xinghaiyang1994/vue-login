@@ -8,12 +8,6 @@
             <el-form-item label="密码" prop="password">
                 <el-input v-model="form.password" type="password"></el-input>
             </el-form-item>
-            <div>
-                <img @click="chgCaptcha" :src="captcha" width="200" height="50" alt="">
-            </div>
-            <el-form-item label="验证码" prop="captcha">
-                <el-input v-model="form.captcha" type="password"></el-input>
-            </el-form-item>
             <el-form-item>
                 <el-button type="primary" @click="submitForm">登录</el-button>
                 <el-button @click="resetForm">重置</el-button>
@@ -23,6 +17,8 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 import {
     postLogin
 } from '../api'
@@ -34,8 +30,7 @@ export default {
         return {
             form: {
                 name: '',
-                password: '',
-                captcha: ''
+                password: ''
             },
             captcha: '',
             rules: {
@@ -45,16 +40,10 @@ export default {
                 password: [
                     { required: true, message: '不能为空', trigger: 'change' }
                 ],
-                captcha: [
-                    { required: true, message: '不能为空', trigger: 'change' }
-                ],
             }
         }
     },
     methods: {
-        chgCaptcha () {
-            this.captcha = API.CAPTCHA + '?t=' + (new Date()).getTime()
-        },
         toLogin () {
             let data = this.form
             postLogin(data).then(res => {
@@ -63,6 +52,7 @@ export default {
                         type: 'success',
                         message: '登录成功。'
                     })
+                    localStorage.setItem('token', res.data.token)
                     setTimeout(() => {
                         this.$router.push('/')
                     }, 500)
@@ -90,9 +80,6 @@ export default {
         resetForm () {
             this.$refs['form'].resetFields()
         }
-    },
-    created () {
-        this.chgCaptcha()
     }
 }
 </script>
