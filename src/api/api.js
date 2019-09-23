@@ -1,7 +1,7 @@
 const ENV = 'DEV'
 
 const DOMAIN_URL = {
-    DEV: '//www.a.com:3100'
+    DEV: '//www.a.com:3010'
 }
 
 const DOMAIN = DOMAIN_URL[ENV]
